@@ -32,7 +32,7 @@ const DeleteConfirmModal = ({
           variant="danger"
           onClick={() => {
             onDeleteNote(note.id);
-            navigate("/");
+            navigate("/notes-app");
           }}
         >
           Delete

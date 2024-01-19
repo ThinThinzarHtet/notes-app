@@ -50,7 +50,7 @@ export function NoteList({
         </Col>
         <Col xs="auto">
           <Stack gap={2} direction="horizontal">
-            <Link to="/new">
+            <Link to="/notes-app/new">
               <Button type="button" variant="primary">
                 Create
               </Button>
@@ -125,7 +125,7 @@ function NoteCard({ id, title, tags }: SimplifiedNote) {
   return (
     <Card
       as={Link}
-      to={`/${id}`}
+      to={`/notes-app/${id}`}
       className={`h-100 text-reset text-decoration-none ${style.card}`}
     >
       <Card.Body>

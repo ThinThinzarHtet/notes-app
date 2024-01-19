@@ -31,7 +31,7 @@ function NoteForm({
       markdown: markdownRef.current!.value,
       tags: selectedTags,
     });
-    navigate("..");
+    navigate("/notes-app");
   };
   return (
     <Form onSubmit={handleSubmit}>
@@ -87,7 +87,7 @@ function NoteForm({
           <Button type="submit" variant="primary">
             Save
           </Button>
-          <Link to="..">
+          <Link to="/notes-app">
             <Button type="button" variant="outline-secondary">
               Cancel
             </Button>
