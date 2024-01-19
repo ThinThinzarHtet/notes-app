@@ -1,14 +1,17 @@
 import { Badge, Button, Col, Row, Stack } from "react-bootstrap";
 import { useNote } from "./NoteLayout";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
+import DeleteConfirmModal from "./modals/DeleteConfirmModal";
+import { useState } from "react";
 
 type NoteProps = {
   onDelete: (id: string) => void;
 };
 export function Note({ onDelete }: NoteProps) {
   const note = useNote();
-  const navigate = useNavigate();
+  const [deleteConfirmModalIsOpen, setDeleteConfirmModalIsOpen] =
+    useState(false);
   return (
     <>
       <Row className="align-items-center mb-4">
@@ -35,8 +38,7 @@ export function Note({ onDelete }: NoteProps) {
               type="button"
               variant="outline-danger"
               onClick={() => {
-                onDelete(note.id);
-                navigate("/");
+                setDeleteConfirmModalIsOpen(true);
               }}
             >
               Delete
@@ -50,6 +52,13 @@ export function Note({ onDelete }: NoteProps) {
         </Col>
       </Row>
       <ReactMarkdown>{note.markdown}</ReactMarkdown>
+      {deleteConfirmModalIsOpen && (
+        <DeleteConfirmModal
+          onDeleteNote={onDelete}
+          show={deleteConfirmModalIsOpen}
+          handleClose={() => setDeleteConfirmModalIsOpen(false)}
+        />
+      )}
     </>
   );
 }

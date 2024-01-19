@@ -1,4 +1,3 @@
-
 import { Button, Col, Form, Modal, Row, Stack } from "react-bootstrap";
 import { Tag } from "../../App";
 
@@ -24,27 +23,31 @@ const EditTagModal = ({
       </Modal.Header>
       <Modal.Body>
         <Form>
-          <Stack gap={2}>
-            {availableTags.map((tag) => (
-              <Row key={tag.id}>
-                <Col>
-                  <Form.Control
-                    type="text"
-                    value={tag.label}
-                    onChange={(e) => onUpdateTag(tag.id, e.target.value)}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <Button
-                    variant="outline-danger"
-                    onClick={() => onDeleteTag(tag.id)}
-                  >
-                    &times;
-                  </Button>
-                </Col>
-              </Row>
-            ))}
-          </Stack>
+          {availableTags.length === 0 ? (
+            <p className="text-center">There is no tag currently</p>
+          ) : (
+            <Stack gap={2}>
+              {availableTags.map((tag) => (
+                <Row key={tag.id}>
+                  <Col>
+                    <Form.Control
+                      type="text"
+                      value={tag.label}
+                      onChange={(e) => onUpdateTag(tag.id, e.target.value)}
+                    />
+                  </Col>
+                  <Col xs="auto">
+                    <Button
+                      variant="outline-danger"
+                      onClick={() => onDeleteTag(tag.id)}
+                    >
+                      &times;
+                    </Button>
+                  </Col>
+                </Row>
+              ))}
+            </Stack>
+          )}
         </Form>
       </Modal.Body>
     </Modal>

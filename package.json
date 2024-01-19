@@ -1,7 +1,7 @@
 {
-  "homepage": "https://ThinThinzarHtet.github.io/notes-app",
   "name": "notes-app",
   "private": true,
+  "homepage": "https://ThinThinzarHtet.github.io/notes-app",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
